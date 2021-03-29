@@ -30,8 +30,14 @@ window.addEventListener("load", () => {
 
       if (pilotName.value === "" || copilotName.value === "" || fuelLevel.value === "" || cargoMass.value === "") {
          window.alert("All fields are required.");
+         launchStatus.innerHTML = "Awaiting Information Before Launch";
+         launchStatus.style.color = "black";
+         faultyItems.style.visibility = "hidden";
       } else if (isNaN(fuelLevel.value) || isNaN(cargoMass.value) || !(isNaN(pilotName.value)) || !(isNaN(copilotName.value))) {
          window.alert("Make sure to enter valid information for each field.");
+         launchStatus.innerHTML = "Awaiting Information Before Launch";
+         launchStatus.style.color = "black";
+         faultyItems.style.visibility = "hidden";
       } else if (fuelLevel.value < 10000) {
          faultyItems.style.visibility = "visible";
          fuelStatus.innerHTML = "Fuel level too low for launch";
@@ -44,6 +50,7 @@ window.addEventListener("load", () => {
          launchStatus.style.color = "red";
       } else {
          checkForLaunch = true;
+         faultyItems.style.visibility = "hidden";
       }
 
       
